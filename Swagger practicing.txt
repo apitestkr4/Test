@@ -1,0 +1,290 @@
+Authors:
+	Test case #1
+		API: GET /api/v1/Authors
+		Test Case: response should be 200 OK
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 200 OK
+		Status: Pass
+	
+	Test case #2
+		API: GET /api/v1/Authors
+		Test Case: each author should have 4 attributes {id,idBook,firstName,lastName} 
+		Test Type: Positive
+		Expected Result: 
+						{
+							"id": int,
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						}
+						
+		Actual Result: 
+						{
+							"id": int,
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						}
+						
+		Status: Pass
+		
+	Test case #3
+		API: GET /api/v1/Authors/{id} 
+		Test Case: response should be 200 OK
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 200 OK
+		Status: Pass
+		
+		Test case #4
+		API: GET /api/v1/Authors/{id}
+		Test Case: each author should have 4 attributes {id,idBook,firstName,lastName} 
+		Test Type: Positive
+		Expected Result: 
+						{
+							"id": int,
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						}
+						
+		Actual Result: 
+						{
+							"id": int,
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						}
+						
+		Status: Pass
+	
+	Test case #5
+		API: GET /api/v1/Authors/{id} 
+		Test Case: response should include only spicified author with the requested id 
+		Test Type: Positive
+		Expected Result: 
+						[
+						  {
+							"id": {id},
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						  }
+						]
+		Actual Result: 
+						[
+						  {
+							"id": {id},
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						  }
+						]		
+		Status: Sucess	
+		
+	Test case #6
+		API: GET /api/v1/Authors/{id} 
+		Test Case: id should be only integer otherwise a 400 bad request response should be the result
+		Test Type: Negative
+		Expected Result: Code: 400 Bad Request
+		Actual Result: Code: 400 Bad Request	
+		Status: Sucess		
+		
+
+	Test case #7
+		API: GET /api/v1/Authors/{id} 
+		Test Case: If id is not exist in the database a 404 Not Found reponse should be the result.
+		Test Type: Negative
+		Expected Result: Code: 404 Not Found
+		Actual Result: Code: 404 Not Found	
+		Status: Sucess
+	
+	
+	Test case #8
+		API: GET /api/v1/Authors/authors/books/{id} 
+		Test Case: response should be 200 OK
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 200 OK
+		Status: Pass
+		
+		Test case #9
+		API: GET /api/v1/Authors/authors/books/{id} 
+		Test Case: each author should have 4 attributes {id,idBook,firstName,lastName} 
+		Test Type: Positive
+		Expected Result: 
+						{
+							"id": int,
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						}
+						
+		Actual Result: 
+						{
+							"id": int,
+							"idBook": int,
+							"firstName": "string",
+							"lastName": "string"
+						}
+						
+		Status: Pass
+	
+	Test case #10
+		API: GET /api/v1/Authors/authors/books/{id}
+		Test Case: response should include only spicified authors who has idBook with the requested id 
+		Test Type: Positive
+		Expected Result: 
+						[
+						  {
+							"id": int,
+							"idBook": {id},
+							"firstName": "string",
+							"lastName": "string"
+						  }*
+						]
+		Actual Result: 
+						[
+						  {
+							"id": int,
+							"idBook": {id},
+							"firstName": "string",
+							"lastName": "string"
+						  }*
+						]		
+		Status: Sucess	
+		
+	Test case #11
+		API: GET /api/v1/Authors/authors/books/{id} 
+		Test Case: id should be only integer otherwise a 400 bad request response should be the result
+		Test Type: Negative
+		Expected Result: Code: 400 Bad Request
+		Actual Result: Code: 400 Bad Request
+		Status: Sucess		
+		
+
+	Test case #12
+		API: GET /api/v1/Authors/authors/books/{id} 
+		Test Case: If id is not exist in the databaes a 404 Not Found reponse should be the result.
+		Test Type: Negative
+		Expected Result: Code: 404 Not Found	
+		Actual Result: Code: 200 OK
+		Status: Fail
+	
+	
+	
+	
+	Test case #13
+		API: POST /api/v1/Authors
+		Test Case: response should be 200 OK
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 200 OK
+		Status: Pass
+	
+	Test case #14
+		API: POST /api/v1/Authors
+		Test Case: if changing data type of any attribute the response should be 400 Bad Request where id&idBook should be int and firstName&lastName should be string 
+		Test Type: Negative
+		Expected Result: Code: 400 Bad Request
+		Actual Result: Code: 400 Bad Request
+		Status: Pass
+	
+	Test case #15
+		API: POST /api/v1/Authors
+		Test Case: response should be 200 OK
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 200 OK
+		Status: Pass
+	
+	
+		
+	Test case #16
+		API: POST /api/v1/Authors
+		Test Case: Posting an author object with changing its attributes data type like assigning id with non-INT value should fail with 400 Bad Request.
+		Test Type: Negative
+		Expected Result: 400 Bad Request
+		Actual Result: 400 Bad Request
+		Status: Pass
+		
+	Test case #17
+		API: POST /api/v1/Authors
+		Test Case: After posting a new author the database should be updated and the new author should be accessible with the GET api/v1/Authors/{id} 
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 404 Not Found
+		Status: Fail
+		
+	Test case #18
+		API: POST /api/v1/Authors
+		Test Case: Sending empty request should result 400 Bad Reques
+		Test Type: Positive
+		Expected Result: 400 Bad Reques
+		Actual Result: 400 Bad Reques
+		Status: Sucess
+	
+	Test case #19
+		API: PUT /api/v1/Authors/{id}
+		Test Case: response should be 200 OK
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 200 OK
+		Status: Pass
+		
+	Test case #20
+		API: PUT /api/v1/Authors/{id}
+		Test Case: id attribute should not change or the id in the path parameter different from the one in the request body
+		Test Type: Negative
+		Expected Result: 400 Bad Request
+		Actual Result: 200 OK
+		Status: fail
+
+	Test case #21
+		API: PUT /api/v1/Authors/{id}
+		Test Case: After PUT request the database should be updated and the updated author should be accessible with the GET api/v1/Authors/{id} 
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 404 Not Found
+		Status: Fail
+	
+	Test case #22
+		API: PUT /api/v1/Authors/{id}
+		Test Case: Putting an author object with changing its attributes data type like assigning id with non-INT value should fail with 400 Bad Request.
+		Test Type: Negative
+		Expected Result: 400 Bad Request
+		Actual Result: 400 Bad Request
+		Status: Pass
+
+	Test case #23
+		API: DELETE /api/v1/Authors/{id}
+		Test Case: response should be 200 OK
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 200 OK
+		Status: Pass
+
+	Test case #24
+		API: DELETE /api/v1/Authors/{id}
+		Test Case: After DELETE request the database should be updated and the new author should be accessible with the GET api/v1/Authors/{id} 
+		Test Type: Positive
+		Expected Result: 200 OK
+		Actual Result: 404 Not Found
+		Status: fail
+
+	Test case #25
+		API: DELETE /api/v1/Authors/{id}
+		Test Case: Deleting a non-existing auther should result 404 Not Found
+		Test Type: Negative
+		Expected Result: 404 Not Found
+		Actual Result: 200 OK
+		Status: fail
+		
+	Test case #26
+		API: DELETE /api/v1/Authors/{id}
+		Test Case: id should be only integer otherwise a 400 bad request response should be the result
+		Test Type: Negative
+		Expected Result: 400 bad Request
+		Actual Result: 400 bad Request
+		Status: Sucess
